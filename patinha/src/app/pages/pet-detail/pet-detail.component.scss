@@ -1,0 +1,194 @@
+.detail-wrapper {
+  padding: 8rem 0 5rem;
+  background: linear-gradient(to bottom, #fffbf2 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+.back-nav {
+  margin-bottom: 2rem;
+  .btn-back {
+    color: var(--text-muted);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+    &:hover { color: var(--orange-primary); }
+  }
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  
+  @media (min-width: 992px) {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+}
+
+// Galeria
+.gallery-container {
+  .main-image-box {
+    position: relative;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    height: 400px;
+    background: #eee;
+
+    @media (min-width: 768px) { height: 500px; }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge-tipo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 0.6rem 1.5rem;
+      border-radius: 20px;
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      &.cachorro { background: var(--primary-gradient); }
+      &.gato { background: var(--secondary-gradient); }
+    }
+  }
+
+  .thumbnail-list {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+
+    .thumb-item {
+      flex: 0 0 80px;
+      height: 80px;
+      border-radius: 15px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: all 0.3s;
+
+      &.active { border-color: var(--orange-primary); transform: scale(1.05); }
+      &:hover { border-color: var(--orange-primary); }
+
+      img { width: 100%; height: 100%; object-fit: cover; }
+    }
+  }
+}
+
+// Informações
+.info-container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 40px;
+  box-shadow: var(--shadow-md);
+
+  @media (max-width: 768px) { padding: 1.5rem; }
+
+  .pet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+
+    .title-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      h1 { font-size: 3rem; margin: 0; color: var(--text-main); }
+      .sex-icon {
+        font-size: 1.5rem;
+        font-weight: bold;
+        &.macho { color: var(--blue-primary); }
+        &.fêmea { color: var(--orange-primary); }
+      }
+    }
+
+    .btn-share {
+      background: var(--bg-soft);
+      border: 1px solid #eee;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover { background: #f0f0f0; transform: translateY(-2px); }
+    }
+  }
+
+  .quick-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .stat-pill {
+      background: var(--bg-soft);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      strong { color: var(--text-main); }
+    }
+  }
+
+  .health-check {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(0, 198, 255, 0.05);
+    border-radius: 20px;
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      color: #777;
+      &.done { color: var(--text-main); }
+    }
+  }
+
+  .history-section {
+    margin-bottom: 3rem;
+    h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--orange-dark); }
+    p { font-size: 1.1rem; line-height: 1.8; color: #555; }
+
+    .rescue-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px dashed #eee;
+
+      @media (max-width: 480px) { grid-template-columns: 1fr; }
+
+      .rescue-item {
+        strong { display: block; color: var(--text-main); margin-bottom: 0.3rem; }
+        p { font-size: 1rem; margin: 0; }
+      }
+    }
+  }
+
+  .action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+
+    @media (max-width: 480px) { grid-template-columns: 1fr; }
+
+    .btn-lg {
+      padding: 1.2rem;
+      font-size: 1.1rem;
+    }
+  }
+}

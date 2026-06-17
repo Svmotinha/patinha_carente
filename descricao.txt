@@ -1,0 +1,24 @@
+# Contexto do Projeto: Patinha Carente
+
+## 1. Visão Geral
+O projeto "Patinha Carente" é um sistema web desenvolvido para uma ONG de resgate e adoção de animais. O objetivo principal é dar visibilidade aos pets disponíveis para adoção e, futuramente, gerenciar todo o fluxo de interação com os usuários, desde o agendamento de visitas até o controle de apadrinhamentos e doações, como também, viabilizar para usuários autenticados a edição (get, put, post, delete) de dados (pets, noticias, fotos).
+
+## 2. Stack Tecnológica
+*   **Frontend:** Angular (com SSR habilitado para SEO da vitrine pública).
+*   **Backend:** Java com Spring Boot (API RESTful).
+*   **Banco de Dados:** Relacional (MySQL), preparado para integração via Spring Data JPA.
+
+## 3. Requisitos do Sistema e Funcionalidades (Foco em Modelagem)
+O banco de dados deve ser projetado para suportar as seguintes funcionalidades:
+*   **Gestão de Pets:** Cadastro de animais com informações detalhadas (nome, espécie, raça, porte, idade, descrição de personalidade, fotos e status atual: Disponível, Em Processo, Adotado). Exemplos de registros esperados: cães como Fubá, ou gatos como Miau.
+*   **Gestão de Usuários:** Cadastro de pessoas interessadas em adotar, apadrinhar ou doar, além de perfis de administrador (voluntários da ONG).
+*   **Interesse e Agendamento:** Registro da intenção de adoção, vinculando o usuário ao pet de interesse, com marcação de data/hora para visita presencial e controle de status do agendamento (Pendente, Confirmado, Cancelado, Concluído).
+*   **Apadrinhamento:** Registro de usuários que decidem apadrinhar um pet específico, auxiliando nos custos mensais de forma recorrente.
+*   **Doações:** Histórico de contribuições financeiras gerais ou direcionadas a campanhas/pets específicos.
+
+## 4. Instrução para a IA
+Atuando como um Engenheiro de Software e Arquiteto de Dados Sênior, utilize este contexto para projetar a modelagem de dados inicial. 
+A partir daqui, aguarde meus comandos para gerar:
+1. O Diagrama de Entidade-Relacionamento (MER/DER).
+2. Os scripts SQL (DDL) para criação das tabelas.
+3. As classes de Entidade (Entity) do Spring Boot utilizando anotações do JPA/Hibernate e Lombok.

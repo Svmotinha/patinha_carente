@@ -1,0 +1,79 @@
+<section class="pets-catalog">
+  <div class="container">
+    <div class="catalog-header">
+      <span class="badge">Nossa Família</span>
+      <h1>Conheça nossos <span class="highlight">Pets</span></h1>
+      <p>Cada um deles tem uma história única e muito amor para dar. Filtre e encontre seu novo companheiro.</p>
+    </div>
+
+    <!-- Barra de Filtros -->
+    <div class="filter-bar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          placeholder="Buscar por nome..." 
+          [(ngModel)]="searchTerm"
+          (input)="applyFilters()"
+        >
+      </div>
+
+      <div class="filter-groups">
+        <!-- Filtro de Tipo -->
+        <div class="btn-group">
+          <button 
+            [class.active]="selectedTipo === 'Todos'" 
+            (click)="selectedTipo = 'Todos'; applyFilters()">Todos</button>
+          <button 
+            [class.active]="selectedTipo === 'Cachorro'" 
+            (click)="selectedTipo = 'Cachorro'; applyFilters()">Cachorros</button>
+          <button 
+            [class.active]="selectedTipo === 'Gato'" 
+            (click)="selectedTipo = 'Gato'; applyFilters()">Gatos</button>
+        </div>
+
+        <!-- Filtro de Sexo -->
+        <select [(ngModel)]="selectedSexo" (change)="applyFilters()" class="filter-select">
+          <option value="Todos">Sexo (Todos)</option>
+          <option value="Macho">Macho</option>
+          <option value="Fêmea">Fêmea</option>
+        </select>
+
+        <!-- Filtro de Porte -->
+        <select [(ngModel)]="selectedPorte" (change)="applyFilters()" class="filter-select">
+          <option value="Todos">Porte (Todos)</option>
+          <option value="Pequeno">Pequeno</option>
+          <option value="Médio">Médio</option>
+          <option value="Grande">Grande</option>
+        </select>
+
+        <!-- Filtro de Idade -->
+        <select [(ngModel)]="selectedIdade" (change)="applyFilters()" class="filter-select">
+          <option value="Todos">Idade (Todas)</option>
+          <option value="Filhote">Filhote (< 1 ano)</option>
+          <option value="Adulto">Adulto (1 a 7 anos)</option>
+          <option value="Sênior">Sênior (+ 7 anos)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="results-info" *ngIf="filteredPets.length > 0">
+      Exibindo {{ filteredPets.length }} {{ filteredPets.length === 1 ? 'animal' : 'animais' }}
+    </div>
+
+    <div class="pets-grid" *ngIf="filteredPets.length > 0">
+      @for (pet of filteredPets; track pet.id) {
+        <app-pet-card [pet]="pet"></app-pet-card>
+      }
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="filteredPets.length === 0">
+      <div class="empty-icon">🔎</div>
+      <h3>Nenhum pet encontrado</h3>
+      <p>Tente ajustar seus filtros ou buscar por outro nome.</p>
+      <button class="btn btn-blue" (click)="resetFilters()">Limpar Filtros</button>
+    </div>
+  </div>
+</section>

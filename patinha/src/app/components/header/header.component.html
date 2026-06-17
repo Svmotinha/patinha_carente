@@ -1,0 +1,41 @@
+<header class="header">
+  <div class="container">
+    <!-- Hamburguer Mobile -->
+    <button class="menu-toggle" (click)="toggleMenu()" [class.open]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="logo">
+      <a routerLink="/" (click)="closeMenu()">
+        <img src="assets/logo.jpeg" alt="Patinha Carente Logo">
+        <span>Patinha Carente</span>
+      </a>
+    </div>
+
+    <nav class="nav" [class.mobile-open]="isMenuOpen">
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a></li>
+        <li><a routerLink="/pets" routerLinkActive="active" (click)="closeMenu()">Pets</a></li>
+        <li><a routerLink="/noticias" routerLinkActive="active" (click)="closeMenu()">Notícias</a></li>
+        <li><a routerLink="/contato" routerLinkActive="active" (click)="closeMenu()">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="auth-buttons">
+      <button class="btn-donate" routerLink="/noticias" (click)="closeMenu()">Doe Agora ❤️</button>
+      
+      <!-- Se logado, mostra info do user -->
+      <div class="user-profile" *ngIf="isLoggedIn; else loginBtn">
+        <span class="user-name">{{ userEmail?.split('@')?.[0] }}</span>
+        <button class="btn-logout" (click)="logout()">Sair</button>
+      </div>
+
+      <!-- Se não logado, mostra botão de login -->
+      <ng-template #loginBtn>
+        <button class="btn-login" routerLink="/login" (click)="closeMenu()">Entrar</button>
+      </ng-template>
+    </div>
+  </div>
+</header>

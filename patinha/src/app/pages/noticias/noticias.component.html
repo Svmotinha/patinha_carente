@@ -1,0 +1,70 @@
+<div class="news-wrapper">
+  <section class="news-header">
+    <div class="container">
+      <span class="badge">Impacto Social</span>
+      <h1>Notícias e <span class="highlight">Ações</span></h1>
+      <p>Acompanhe nossa jornada de resgates, campanhas e o impacto da Patinha Carente na comunidade.</p>
+    </div>
+  </section>
+
+  <section class="news-content">
+    <div class="container">
+      <div class="news-grid-layout">
+        
+        <!-- Bloco Principal de Notícias -->
+        <div class="news-main">
+          <div class="news-blocks">
+            <div class="news-card" *ngFor="let noticia of noticias">
+              <div class="card-visual">
+                <div class="placeholder-icon">{{ noticia.imagemPlaceholder }}</div>
+                <span class="category-badge">{{ noticia.categoria }}</span>
+              </div>
+              <div class="card-info">
+                <div class="meta">
+                  <span class="source">{{ noticia.fonte }}</span> • <span class="date">{{ noticia.data }}</span>
+                </div>
+                <h3>{{ noticia.titulo }}</h3>
+                <p>{{ noticia.resumo }}</p>
+                <a [href]="noticia.link" target="_blank" class="btn-read">Ler notícia completa →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar de Apoio -->
+        <aside class="support-sidebar">
+          
+          <!-- Bloco PIX -->
+          <div class="support-card pix-card">
+            <div class="icon-box">💰</div>
+            <h3>Apoie com PIX</h3>
+            <p>Sua doação ajuda a custear tratamentos e alimentação.</p>
+            <div class="pix-area">
+              <code>{{ ongLinks.pix }}</code>
+              <button class="btn btn-orange" (click)="copyPix()">Copiar Chave</button>
+            </div>
+          </div>
+
+          <!-- Bloco Voluntariado -->
+          <div class="support-card volunteer-card">
+            <div class="icon-box">🤝</div>
+            <h3>Seja Voluntário</h3>
+            <p>Participe do nosso grupo de WhatsApp e ajude como puder.</p>
+            <a [href]="ongLinks.whatsappGroup" target="_blank" class="btn btn-blue">Entrar no Grupo</a>
+          </div>
+
+          <!-- Bloco Redes Sociais -->
+          <div class="support-card social-card">
+            <h3>Siga-nos</h3>
+            <div class="social-links">
+              <a [href]="ongLinks.instagram" target="_blank" class="social-btn insta">Instagram</a>
+              <a [href]="ongLinks.facebook" target="_blank" class="social-btn face">Facebook</a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+</div>

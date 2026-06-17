@@ -1,0 +1,76 @@
+<div class="detail-wrapper" *ngIf="pet">
+  <div class="container">
+    <div class="back-nav">
+      <a routerLink="/pets" class="btn-back">← Voltar para a vitrine</a>
+    </div>
+
+    <div class="detail-grid">
+      <!-- Galeria -->
+      <div class="gallery-container">
+        <div class="main-image-box">
+          <img [src]="mainImage" [alt]="pet.nome">
+          <span class="badge-tipo" [ngClass]="pet.tipo.toLowerCase()">{{ pet.tipo }}</span>
+        </div>
+        <div class="thumbnail-list">
+          <div 
+            class="thumb-item" 
+            *ngFor="let img of pet.galeria" 
+            [class.active]="img === mainImage"
+            (click)="changeImage(img)"
+          >
+            <img [src]="img" [alt]="pet.nome">
+          </div>
+        </div>
+      </div>
+
+      <!-- Informações -->
+      <div class="info-container">
+        <div class="pet-header">
+          <div class="title-area">
+            <h1>{{ pet.nome }}</h1>
+            <span class="sex-icon" [ngClass]="pet.sexo.toLowerCase()">{{ pet.sexo === 'Macho' ? '♂' : '♀' }}</span>
+          </div>
+          <button class="btn-share" (click)="compartilhar()">
+            <span>📤</span> Compartilhar
+          </button>
+        </div>
+
+        <div class="quick-stats">
+          <div class="stat-pill"><strong>Idade:</strong> {{ pet.idade }}</div>
+          <div class="stat-pill"><strong>Porte:</strong> {{ pet.porte }}</div>
+          <div class="stat-pill"><strong>Sexo:</strong> {{ pet.sexo }}</div>
+        </div>
+
+        <div class="health-check">
+          <div class="check-item" [class.done]="pet.vacinado">
+            <span class="icon">{{ pet.vacinado ? '✅' : '⏳' }}</span> Vacinado
+          </div>
+          <div class="check-item" [class.done]="pet.castrado">
+            <span class="icon">{{ pet.castrado ? '✅' : '⏳' }}</span> Castrado
+          </div>
+        </div>
+
+        <div class="history-section">
+          <h3>Minha História</h3>
+          <p>{{ pet.historia }}</p>
+          
+          <div class="rescue-details">
+            <div class="rescue-item">
+              <strong>Onde fui encontrado:</strong>
+              <p>{{ pet.localResgate }}</p>
+            </div>
+            <div class="rescue-item">
+              <strong>Tempo na ONG:</strong>
+              <p>{{ pet.tempoOng }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn btn-orange btn-lg" [routerLink]="['/adotar']" [queryParams]="{id: pet.id, name: pet.nome}">Quero Adotar</button>
+          <button class="btn btn-blue btn-lg">Quero Apadrinhar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

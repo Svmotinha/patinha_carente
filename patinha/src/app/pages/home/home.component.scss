@@ -1,0 +1,411 @@
+.home-wrapper {
+  background-color: var(--bg-soft);
+}
+
+// Global Animation for Sections
+section {
+  padding: 4rem 0; // Reduced padding for mobile
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+  
+  @media (min-width: 992px) {
+    padding: 8rem 0;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 1. Hero Section
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: white;
+  padding: 6rem 0 4rem; // Space for fixed header
+  overflow: hidden;
+
+  @media (min-width: 992px) {
+    height: 95vh;
+    padding: 0;
+  }
+
+  .blob-bg {
+    position: absolute;
+    top: -5%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 126, 95, 0.15) 0%, rgba(0, 198, 255, 0.1) 100%);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    z-index: 1;
+    animation: blobMorph 10s infinite alternate;
+
+    @media (min-width: 992px) {
+      width: 600px;
+      height: 600px;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column; // Mobile first: stack
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+
+    @media (min-width: 992px) {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      text-align: left;
+    }
+  }
+
+  .hero-content {
+    order: 2; // Image first on mobile? Or content? Usually content.
+    @media (min-width: 992px) { order: 1; }
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(255, 126, 95, 0.1);
+    color: var(--orange-dark);
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem; // Mobile size
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #1a1a1a;
+
+    @media (min-width: 768px) { font-size: 3.5rem; }
+    @media (min-width: 992px) { font-size: 4.5rem; }
+
+    .highlight {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 992px) {
+      font-size: 1.2rem;
+      margin-left: 0;
+    }
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column; // Stack buttons on very small screens
+    gap: 1rem;
+    align-items: center;
+
+    @media (min-width: 480px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    @media (min-width: 992px) {
+      justify-content: flex-start;
+    }
+
+    .btn {
+      width: 100%;
+      @media (min-width: 480px) { width: auto; }
+    }
+  }
+
+  .hero-image {
+    order: 1;
+    @media (min-width: 992px) { order: 2; }
+    
+    .dog-illustration {
+      width: 250px;
+      height: 250px;
+      background: var(--secondary-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+
+      @media (min-width: 768px) {
+        width: 350px;
+        height: 350px;
+      }
+
+      @media (min-width: 992px) {
+        width: 400px;
+        height: 400px;
+      }
+
+      .paws-container {
+        position: absolute;
+        width: 110%;
+        height: 110%;
+        animation: rotate 20s linear infinite;
+        z-index: 1;
+
+        .paw {
+          position: absolute;
+          font-size: 1.5rem;
+          color: var(--orange-primary);
+          filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+
+          @media (min-width: 992px) { font-size: 2.2rem; }
+
+          &:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%) rotate(0deg); }
+          &:nth-child(2) { top: 25%; right: 5%; transform: rotate(45deg); }
+          &:nth-child(3) { bottom: 25%; right: 5%; transform: rotate(135deg); }
+          &:nth-child(4) { bottom: 0; left: 50%; transform: translateX(-50%) rotate(180deg); }
+          &:nth-child(5) { bottom: 25%; left: 5%; transform: rotate(225deg); }
+          &:nth-child(6) { top: 25%; left: 5%; transform: rotate(-45deg); }
+        }
+      }
+
+      .mascot-img {
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid white;
+        position: relative;
+        z-index: 2;
+        @media (min-width: 992px) { border-width: 10px; }
+      }
+    }
+  }
+
+  .wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    
+    svg {
+      width: 100%;
+      height: 50px; // Smaller on mobile
+      fill: var(--bg-soft);
+      @media (min-width: 992px) { height: 100px; }
+    }
+  }
+}
+
+// 2. About Section
+.about {
+  .about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+
+    @media (min-width: 992px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+  }
+
+  .about-card {
+    background: white;
+    padding: 2rem; // Mobile padding
+    border-radius: 30px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+
+    @media (min-width: 768px) { padding: 3rem; }
+    @media (min-width: 992px) {
+      padding: 4rem;
+      text-align: left;
+    }
+
+    .about-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      @media (min-width: 992px) { font-size: 3rem; }
+    }
+
+    .divider {
+      width: 50px;
+      height: 4px;
+      background: var(--primary-gradient);
+      margin: 0 auto 1.5rem;
+      border-radius: 10px;
+      @media (min-width: 992px) { margin: 0 0 2rem 0; }
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .about-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      @media (min-width: 992px) { justify-content: flex-start; gap: 3rem; }
+
+      .stat {
+        h3 {
+          font-size: 1.8rem;
+          color: var(--blue-primary);
+          margin-bottom: 0.1rem;
+          @media (min-width: 992px) { font-size: 2.5rem; }
+        }
+        span {
+          font-weight: 600;
+          color: #999;
+          text-transform: uppercase;
+          font-size: 0.7rem;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+
+  .about-visual {
+    position: relative;
+    width: 100%;
+    height: 250px; // Mobile height
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 768px) { height: 350px; }
+    @media (min-width: 992px) { height: 500px; }
+
+    .circle-decor {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: var(--mixed-gradient);
+      opacity: 0.1;
+      border-radius: 50%;
+      animation: pulse 4s infinite ease-in-out;
+      @media (min-width: 768px) { width: 350px; height: 350px; }
+      @media (min-width: 992px) { width: 100%; height: 100%; }
+    }
+
+    .content-box {
+      background: var(--secondary-gradient);
+      padding: 2rem;
+      border-radius: 25px;
+      color: white;
+      position: relative;
+      z-index: 2;
+      box-shadow: var(--shadow-lg);
+      transform: rotate(2deg);
+      max-width: 300px;
+      text-align: center;
+
+      @media (min-width: 992px) {
+        padding: 3rem;
+        max-width: none;
+        transform: rotate(3deg);
+      }
+
+      h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+      p { font-size: 1rem; opacity: 0.9; }
+    }
+  }
+}
+
+// 3. Why Adopt Section
+.why-adopt {
+  background: white;
+  border-radius: 40px 40px 0 0; // Smaller radius on mobile
+  @media (min-width: 992px) { border-radius: 80px 80px 0 0; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    @media (min-width: 992px) { margin-bottom: 5rem; }
+    
+    h2 { font-size: 2rem; margin-bottom: 0.5rem; @media (min-width: 992px) { font-size: 3.5rem; } }
+    p { font-size: 1rem; color: #777; }
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr; // Mobile: 1 col
+    gap: 1.5rem;
+
+    @media (min-width: 640px) { grid-template-columns: 1fr 1fr; }
+    @media (min-width: 1024px) { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  }
+
+  .feature-card {
+    padding: 2rem;
+    border-radius: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    p { font-size: 0.95rem; color: #555; line-height: 1.5; }
+
+    &.orange {
+      background: rgba(255, 126, 95, 0.05);
+      &:hover { background: rgba(255, 126, 95, 0.1); transform: translateY(-5px); }
+      h3 { color: var(--orange-dark); }
+    }
+
+    &.blue {
+      background: rgba(0, 198, 255, 0.05);
+      &:hover { background: rgba(0, 198, 255, 0.1); transform: translateY(-5px); }
+      h3 { color: var(--blue-dark); }
+    }
+  }
+}
+
+// Animations
+@keyframes blobMorph {
+  0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  100% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}

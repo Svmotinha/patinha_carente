@@ -1,0 +1,97 @@
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fffbf2 0%, #ffecc7 100%);
+  padding: 2rem;
+}
+
+.login-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 40px;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+
+  @media (max-width: 480px) { padding: 2rem; }
+
+  .login-header {
+    margin-bottom: 2.5rem;
+
+    .logo-box {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--orange-primary);
+      cursor: pointer;
+      
+      img { width: 100%; height: 100%; object-fit: cover; }
+    }
+
+    h1 { font-size: 2rem; color: var(--text-main); margin-bottom: 0.5rem; }
+    p { color: var(--text-muted); font-size: 0.95rem; }
+  }
+}
+
+form {
+  text-align: left;
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label { font-weight: 600; color: var(--text-main); font-size: 0.9rem; }
+    
+    input {
+      padding: 1rem;
+      border-radius: 15px;
+      border: 2px solid #f0f0f0;
+      font-family: inherit;
+      transition: all 0.3s;
+
+      &:focus {
+        outline: none;
+        border-color: var(--orange-primary);
+        box-shadow: 0 0 0 4px rgba(255, 126, 95, 0.1);
+      }
+    }
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+
+    a { color: var(--blue-primary); font-weight: 600; &:hover { text-decoration: underline; } }
+    label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+  }
+
+  .error-msg { color: #e74c3c; font-size: 0.85rem; margin-bottom: 1rem; text-align: center; font-weight: 500; }
+}
+
+.login-footer {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+
+  a { 
+    color: var(--orange-dark); 
+    font-weight: 700; 
+    cursor: pointer;
+    &:hover { text-decoration: underline; } 
+  }
+}
+
+.full-width { width: 100%; }

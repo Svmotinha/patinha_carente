@@ -1,0 +1,17 @@
+<div class="pet-card">
+  <div class="pet-image">
+    <img [src]="pet.imagem" [alt]="pet.nome">
+    <span class="pet-badge" [ngClass]="pet.tipo.toLowerCase()">{{ pet.tipo }}</span>
+  </div>
+  <div class="pet-info">
+    <div class="pet-header">
+      <h3>{{ pet.nome }}</h3>
+      <span class="pet-sex">{{ pet.sexo === 'Macho' ? '♂' : '♀' }}</span>
+    </div>
+    <div class="pet-details">
+      <span>{{ pet.idade }}</span> • <span>{{ pet.porte }}</span>
+    </div>
+    <p class="pet-desc">{{ pet.descricao }}</p>
+    <button class="btn-detail" [routerLink]="['/pet', pet.id]">Conhecer mais</button>
+  </div>
+</div>
